@@ -1,0 +1,7 @@
+version: "3.8"
+services:
+  python:
+    container_name: BBC-Scraper
+    build: .
+    extra_hosts:
+      - "host.docker.internal:host-gateway"

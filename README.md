@@ -1,0 +1,1 @@
+# ChatGPT-Translate-BBC-News
