@@ -1,0 +1,65 @@
+# 新增Index
+PUT /bbc_news
+{
+  "mappings": {
+    "properties": {
+      "type":{
+        "type": "keyword"
+      },
+      "title": {
+        "type": "text"
+      },
+      "content": {
+        "type": "text"
+      },
+      "zh_tw":{
+        "type": "text"
+      },
+      "date":{
+        "type": "date"
+      }
+    }
+  }
+}
+
+# 查看bbc_news的mapping type
+GET /bbc_news/_mapping
+
+# 新增資料至index(PUT /<target>/_create/<_id>)
+PUT /bbc_news/_create/qwe123
+{
+  "type": "type",
+  "title": "Hello World",
+  "content": "This is my first Elasticsearch article.",
+  "zh_tw": "這是我的elasticsearch文章",
+  "date": "date"
+}
+
+# 獲取index內所有資料
+GET /bbc_news/_search
+
+# 全文檢索
+POST bbc_news/_search
+{
+  "query": {
+    "match_phrase": {
+      "zh_tw": "文章"
+    }
+  },
+  "from": 0,
+  "size": 10
+}
+
+# 獲取index內所有資料並依照日期排序
+POST bbc_news/_search
+{
+    "query": {
+        "match_all": {}
+    },
+    "sort": [
+        {"date": {"order": "desc"}}
+    ]
+}
+
+# 刪除index
+DELETE /bbc_news
