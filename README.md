@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS bbc_news.bbc_news
 ```
 * main.ipynb 有將資料新增至Elasticsearch的範例。
 
-## 啟動程式
+## 啟動容器
 ```
-python main.py
+docker compose up -d
 ```
