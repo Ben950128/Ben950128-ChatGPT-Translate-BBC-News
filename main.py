@@ -69,6 +69,7 @@ def my_job():
                     print(key, flush=True)
                     if num == 1:    # 每個主題的新聞只insert 1個
                         break
+    print(date.today(), "已新增完成")
     cursor.close()
     conn.close()
 

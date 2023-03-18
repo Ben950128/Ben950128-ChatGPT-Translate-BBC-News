@@ -34,5 +34,4 @@ def crawl_bbc_news(driver):
             if "news" in title_tag["href"] and "http" not in title_tag["href"] and title_tag["href"] not in news_temp_set:
                 news_set[news_type].append(title_tag["href"])
                 news_temp_set.add(title_tag["href"])
-    print(news_set, flush=True)
     return news_set
