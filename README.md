@@ -12,14 +12,15 @@
 CREATE TABLE IF NOT EXISTS bbc_news.bbc_news
 (
     news_id uuid NOT NULL,
-    type character varying(50),
-    title character varying(255),
-    news_origin text,
-    news_tw text,
-    toeic_500 text,
-    toeic_700 text,
-	news_url character varying(255),
-    date date,
+    type CHARACTER VARYING(50) NOT NULL,
+    title CHARACTER VARYING(255) NOT NULL,
+    news_origin TEXT NOT NULL,
+    news_tw TEXT,
+    toeic_500 TEXT,
+    toeic_700 TEXT,
+    news_url CHARACTER VARYING(255),
+    image_path CHARACTER VARYING(255),
+    news_time timestamp without time zone NOT NULL,
     CONSTRAINT bbc_news_pkey PRIMARY KEY (news_id)
 )
 ```

@@ -1,5 +1,7 @@
 import openai
 import os
+import requests
+from io import BytesIO
 from bs4 import BeautifulSoup
 
 
@@ -20,7 +22,6 @@ def crawl_bbc_news(driver):
         "business": [], 
         "technology": [], 
         "science_and_environment": [], 
-        "stories": [], 
         "entertainment_and_arts": [], 
         "health": []
     }
@@ -35,3 +36,11 @@ def crawl_bbc_news(driver):
                 news_set[news_type].append(title_tag["href"])
                 news_temp_set.add(title_tag["href"])
     return news_set
+
+
+def upload_image_to_s3(s3, image_url, news_type, news_id):
+    response = requests.get(image_url)
+    image_data = response.content
+    bucket_name = "bbc-news-bucket"
+    key = f"images/{news_type}/{news_id}.jpg"
+    s3.upload_fileobj(BytesIO(image_data), bucket_name, key)
