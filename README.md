@@ -1,4 +1,12 @@
 # ChatGPT-Translate-BBC-News
+
+## ENV設定
+* DATABASE_CONFIG=""
+* CHATGPT_KEY=""
+* AWS_ACCESS_KEY_ID=""
+* AWS_SECRET_ACCESS_KEY=""
+* S3_BUCKET=""
+
 ## 爬取BBC News
 * 用apscheduler設定每天早上爬取BBC新聞。
 

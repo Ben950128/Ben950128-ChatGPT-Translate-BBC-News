@@ -41,6 +41,6 @@ def crawl_bbc_news(driver):
 def upload_image_to_s3(s3, image_url, news_type, news_id):
     response = requests.get(image_url)
     image_data = response.content
-    bucket_name = "bbc-news-bucket"
+    bucket_name = os.getenv("S3_BUCKET")
     key = f"images/{news_type}/{news_id}.jpg"
     s3.upload_fileobj(BytesIO(image_data), bucket_name, key)
