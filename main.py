@@ -4,6 +4,7 @@ import uuid
 import psycopg
 import warnings
 import boto3
+import time
 from dotenv import load_dotenv
 from bs4 import BeautifulSoup
 from selenium import webdriver
@@ -64,8 +65,11 @@ def my_job():
                 if len(news.split()) < 800:
                     num += 1
                     news_origin = connect_gpt_api(f"將以下文章分段，請用英文回傳:\n{news}").lstrip()
+                    time.sleep(20)
                     news_tw = connect_gpt_api(f"翻譯以下文章並分段，請用繁體中文回傳:\n{news_origin}").lstrip()
+                    time.sleep(20)
                     toeic_500 = connect_gpt_api(f"請用多益500的程度將文章改寫並分段，盡量不要刪減文章原意，請用英文回傳:\n{news_origin}").lstrip()
+                    time.sleep(20)
                     toeic_700 = connect_gpt_api(f"請用多益700的程度將文章改寫並分段，盡量不要刪減文章原意，請用英文回傳:\n{news_origin}").lstrip()
                     news_id = str(uuid.uuid4())
                     upload_image_to_s3(s3, image_url, news_type, news_id)
